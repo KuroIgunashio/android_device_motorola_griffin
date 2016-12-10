@@ -1,1 +1,3 @@
-add_lunch_combo omni_addison-userdebug
+add_lunch_combo omni_griffin-userdebug
+add_lunch_combo omni_griffin-eng
+
