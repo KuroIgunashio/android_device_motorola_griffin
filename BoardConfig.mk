@@ -18,37 +18,44 @@ DEVICE_PATH := device/motorola/griffin
 
 TARGET_RECOVERY_DEVICE_DIRS := $(DEVICE_PATH)
 
-# Arch
-BOARD_VENDOR := motorola-qcom
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := msm8996
+
+# Platform
+TARGET_BOARD_PLATFORM := msm8996
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
+
+# Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_SMP := true
+TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := kryo
+TARGET_CPU_SMP := true
+
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
-TARGET_NO_BOOTLOADER := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cnsscore.pcie_link_down_panic=1 androidboot.selinux=permissive
-
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_RAMDISK_OFFSET := 0x01000000
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
-TARGET_KERNEL_CONFIG := griffin_defconfig
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8996
-
-BOARD_USES_QCOM_HARDWARE := true
-
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+# Kernel
 TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CONFIG := griffin_defconfig
+TARGET_KERNEL_DEVICE_DEFCONFIG := griffin_defconfig
 
+TARGET_PREBUILT_KERNEL := device/motorola/griffin/zImage
+BOARD_CUSTOM_BOOTIMG_MK := device/motorola/griffin/mkbootimg.mk
+
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0
+BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff cnsscore.pcie_link_down_panic=1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS :=  --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100  --dt device/motorola/griffin/dt.img
 
 # Partitions
 BOARD_CACHEIMAGE_FILE_SIZE := ext4
@@ -59,28 +66,32 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 5704253440    #  4194304 * 1024 mmcblk0p53
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 268435456   # 25014255 * 1024 mmcblk0p54
 
-
-# don't take forever to wipe
-#BOARD_SUPPRESS_SECURE_ERASE := true
-#COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-
-# Crypto
-TARGET_HW_DISK_ENCRYPTION := true
-TW_INCLUDE_CRYPTO := true
-
-#CM Recovery
-#TARGET_HAS_NO_SELECT_BUTTON := true
-
-#Moto
-#TARGET_USES_MOTOROLA_LOG := true
-
-# TWRP
-RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FSTAB := device/motorola/griffin/twrp.fstab
-TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
-TARGET_RECOVERY_QCOM_RTC_FIX := true
+# File systems
+BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TW_NEW_ION_HEAP := true
+
+# TWRP
 TW_THEME := portrait_hdpi
-TW_SCREEN_BLANK_ON_BOOT := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
+TARGET_RECOVERY_FSTAB := device/motorola/griffin/twrp.fstab
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun%d/file"
+#TW_NEW_ION_HEAP := true
+#TW_SCREEN_BLANK_ON_BOOT := true
+
+# No Root
+TW_EXCLUDE_SUPERSU := true
+
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# Arch
+BOARD_VENDOR := motorola-qcom
+
+# Debug flags
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
