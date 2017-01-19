@@ -49,9 +49,7 @@ TARGET_KERNEL_DEVICE_DEFCONFIG := griffin_defconfig
 TARGET_PREBUILT_KERNEL := device/motorola/griffin/zImage
 BOARD_CUSTOM_BOOTIMG_MK := device/motorola/griffin/mkbootimg.mk
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0
-BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
-BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff cnsscore.pcie_link_down_panic=1
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff cnsscore.pcie_link_down_panic=1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -60,26 +58,27 @@ BOARD_MKBOOTIMG_ARGS :=  --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 
 # Partitions
 BOARD_CACHEIMAGE_FILE_SIZE := ext4
 BOARD_FLASH_BLOCK_SIZE := 262144
-BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432        #    16384 * 1024 mmcblk0p37
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432    #    16484 * 1024 mmcblk0p38
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 5704253440    #  4194304 * 1024 mmcblk0p53
-BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 268435456   # 25014255 * 1024 mmcblk0p54
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 33554432    #    32768 * 1024 sda17
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33558528    #    32772 * 1024 sda14
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 5704253440  #  5570560 * 1024 sda15
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 268435456   #   262144 * 1024 sda19
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 268435456
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # TWRP
-TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
-TARGET_RECOVERY_FSTAB := device/motorola/griffin/twrp.fstab
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun%d/file"
-#TW_NEW_ION_HEAP := true
-#TW_SCREEN_BLANK_ON_BOOT := true
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_DEFAULT_BRIGHTNESS := 80
+TW_EXTRA_LANGUAGES := true
+TW_THEME := portrait_hdpi
 
 # No Root
 TW_EXCLUDE_SUPERSU := true
@@ -93,5 +92,5 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 BOARD_VENDOR := motorola-qcom
 
 # Debug flags
-TWRP_INCLUDE_LOGCAT := true
-TARGET_USES_LOGD := true
+# TWRP_INCLUDE_LOGCAT := true
+# TARGET_USES_LOGD := true
