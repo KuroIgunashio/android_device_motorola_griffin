@@ -88,11 +88,14 @@ void vendor_load_properties()
     property_set("ro.build.fingerprint", "motorola/griffin/griffin:6.0.1/MPL24.246-20/21:user/release-keys");
     property_set("ro.build.display.id", "griffin-user 6.0.1 MPL24.246-20 21 release-keys");
 
+    std::string dualsim;
+    dualsim = property_get("ro.boot.dualsim");
+
     if (ISMATCH(device_boot, "sheridan")) {
        // Do things?
     }
 
-    if (ISMATCH(sku, "XT1650-05")) {
+    if (ISMATCH(sku, "XT1650-05") || ISMATCH(dualsim, "true")) {
        property_set("persist.radio.custom_ecc", "1");
        property_set("persist.radio.data_ltd_sys_ind", "1");
        property_set("persist.radio.hw_mbn_update", "0");
@@ -101,7 +104,7 @@ void vendor_load_properties()
        property_set("persist.radio.sw_mbn_update", "0");
        property_set("ro.telephony.call_ring.multiple", "false");
        property_set("persist.oem.dump", "0");
-       property_set("persist.volte_enalbed_by_hw", "1");
+       property_set("persist.volte_enabled_by_hw", "1");
     }
 
     device = property_get("ro.product.device");
