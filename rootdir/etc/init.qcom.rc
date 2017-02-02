@@ -754,9 +754,13 @@ service init_wifi /wlan_carrier_bin.sh
 
 on nonencrypted
     setprop ro.kick.logcopy ${ro.bootreason}
-'
+    start gbmodinstall
+
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.kick.logcopy ${ro.bootreason}
+
+on property:vold.decrypt=trigger_post_fs_data
+    start gbmodinstall
 
 service batt_health /system/bin/batt_health
     class late_start
@@ -879,8 +883,15 @@ service mods_camd /system/bin/mods_camd
     class late_start
     user camera
     group camera system inet input graphics
+    disabled
     rlimit 14 4 4
     ioprio rt 4
+
+service gbmodinstall /init.gbmods.sh
+    seclabel u:r:init_mods:s0
+    user root
+    oneshot
+    disabled
 
 service charge_only_mode /system/bin/charge_only_mode
     user root
