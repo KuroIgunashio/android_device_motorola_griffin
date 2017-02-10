@@ -888,7 +888,6 @@ service mods_camd /system/bin/mods_camd
     ioprio rt 4
 
 service gbmodinstall /init.gbmods.sh
-    seclabel u:r:init_mods:s0
     user root
     oneshot
     disabled

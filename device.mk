@@ -184,6 +184,7 @@ PRODUCT_PACKAGES += \
     charger.fstab.qcom \
     fstab.qcom \
     init.mmi.boot.sh \
+    init.gbmods.sh \
     init.mmi.laser.sh \
     init.mmi.usb.rc \
     init.mmi.touch.sh \
