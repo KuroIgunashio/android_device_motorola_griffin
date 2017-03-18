@@ -1,0 +1,31 @@
+[
+  {
+    "remote": "carbon",
+    "repository":  "CarbonROM/android_kernel_motorola_msm8996",
+    "target_path": "kernel/motorola/msm8996"
+  },
+  {
+    "remote": "lineage",
+    "repository": "LineageOS/android_external_bson",
+    "target_path": "external/bson",
+    "revision"   : "cm-14.1"
+  },
+  {
+    "remote": "lineage",
+    "repository": "LineageOS/android_external_stlport",
+    "target_path": "external/stlport",
+    "revision"   : "cm-14.1" 
+ },
+  {
+    "remote": "lineage",
+    "repository": "LineageOS/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "revision"   : "cm-14.1"
+  },
+  {
+    "remote": "lineage",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "revision"   : "cm-14.1"
+ }
+]
