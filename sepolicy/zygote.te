@@ -1,3 +1,12 @@
 allow zygote self:capability sys_nice;
 allow zygote device:file open;
+allow zygote system_server:binder { call transfer };
 allow zygote init:unix_stream_socket { getattr listen };
+
+allow zygote activity_service:service_manager find;
+allow zygote ashmem_device:chr_file execute;
+allow zygote package_service:service_manager find;
+allow zygote self:process execmem;
+allow zygote system_server:binder { call transfer };
+allow zygote zygote_tmpfs:file execute;
+
