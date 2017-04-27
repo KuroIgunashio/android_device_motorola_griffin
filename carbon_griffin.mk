@@ -25,6 +25,7 @@ $(call inherit-product, device/motorola/griffin/device.mk)
 $(call inherit-product, vendor/carbon/config/common.mk)
 
 # Inherit GSM Stuff
+$(call inherit-product, vendor/carbon/config/gsm.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
