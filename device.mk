@@ -135,6 +135,10 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.msm8996
 
+# Dumpstate HAL
+PRODUCT_PACKAGES += \
+    android.hardware.dumpstate@1.0-service.msm8996
+
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
