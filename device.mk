@@ -321,7 +321,7 @@ PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
     com.android.nfc_extras \
-    nfc_nci.msm8996 \
+    nfc_nci.pn54x.default \
     NfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
