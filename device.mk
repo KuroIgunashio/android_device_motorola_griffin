@@ -284,8 +284,6 @@ PRODUCT_PACKAGES += \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
     wificond \
     wifilogd \
     libwpa_client \
