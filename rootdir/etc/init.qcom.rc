@@ -1235,11 +1235,6 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
-service audiod /system/bin/audiod
-    class late_start
-    user system
-    group system
-
 service ppd /system/vendor/bin/mm-pp-dpps
     class late_start
     user system
