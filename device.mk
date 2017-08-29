@@ -136,13 +136,9 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
-    copybit.msm8996 \
     android.hardware.memtrack@1.0-impl \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
-    memtrack.msm8996 \
-    liboverlay \
-    libtinyxml \
     libgenlock \
     memtrack.msm8996
 
@@ -158,8 +154,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprintd
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # GNSS HAL
 PRODUCT_PACKAGES += \
@@ -211,8 +206,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    keystore.msm8996
+    android.hardware.keymaster@3.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -326,17 +320,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl \
-    libbt-vendor
-
 # WiFi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
 
 PRODUCT_PACKAGES += \
-    libnfnetlink \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
