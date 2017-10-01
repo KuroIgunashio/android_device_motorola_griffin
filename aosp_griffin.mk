@@ -32,9 +32,8 @@ PRODUCT_COPY_FILES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/griffin/overlay
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2560
-TARGET_SCREEN_WIDTH := 1440
+# Bootanimation res
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -50,10 +49,9 @@ PRODUCT_GMS_CLIENTID_BASE := android-motorola
 TARGET_VENDOR_PRODUCT_NAME := griffin_retail
 TARGET_VENDOR_DEVICE_NAME := griffin
 
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=griffin PRODUCT_NAME=griffin
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=motorola/griffin/griffin:7.1.1/NPL26.118-20/19:user/release-keys \
-    PRIVATE_BUILD_DESC="griffin-user 7.1.1 NPL26.118-20 19 release-keys"
+    PRIVATE_BUILD_DESC="griffin-user 7.1.1 NPL26.118-20 19 release-keys" \
+    PRODUCT_NAME="Moto Z"
 
 TARGET_VENDOR := motorola
