@@ -21,8 +21,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/motorola/griffin/griffin-vendor.mk)
 $(call inherit-product, device/motorola/griffin/device.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Magisk
+WITH_ROOT=true
+
+# AudioFX
+WITH_AUDIOFX=true
+
+# Inherit some common DarkNess reDefined stuff.
+$(call inherit-product, vendor/dnd/config/common_full_phone.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -40,7 +46,7 @@ TARGET_SCREEN_WIDTH := 1440
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-PRODUCT_NAME := lineage_griffin
+PRODUCT_NAME := dnd_griffin
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := griffin
 PRODUCT_MODEL := XT1650
