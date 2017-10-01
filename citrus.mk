@@ -21,8 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/motorola/griffin/griffin-vendor.mk)
 $(call inherit-product, device/motorola/griffin/device.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common citrus peel.
+$(call inherit-product, vendor/citrus/common.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -40,7 +40,7 @@ TARGET_SCREEN_WIDTH := 1440
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-PRODUCT_NAME := lineage_griffin
+PRODUCT_NAME := citrus_griffin
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := griffin
 PRODUCT_MODEL := XT1650
@@ -57,3 +57,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="griffin-user 7.1.1 NPL26.118-20 19 release-keys"
 
 TARGET_VENDOR := motorola
+
+# Citrus-CAF Unofficial Maintainer
+PRODUCT_BUILD_PROP_OVERRIDES += \
+         DEVICE_MAINTAINERS="Ignacio Trava (KuroIgunashio)"
+
+# CAF REVISION
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.caf.branch=LA.UM.5.5.r1-05800-8x96.0
